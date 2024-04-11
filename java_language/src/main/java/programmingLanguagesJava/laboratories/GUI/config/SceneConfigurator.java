@@ -24,7 +24,6 @@ public class SceneConfigurator {
      * @param windowFXML окно, которое мы хотим перетаскивать
      */
     private static void setWindowDragged(Stage stage, Parent windowFXML) {
-        // Возможность, чтобы окно могло передвигаться при зажатии мышки
         windowFXML.setOnMousePressed(ev -> {
             xOffset = ev.getSceneX();
             yOffset = ev.getSceneY();
