@@ -490,6 +490,7 @@ public class Solution {
         var userChoice = Integer.parseInt(parameter);
 
         var result = Arrays.stream(matrix)
+                // Условие ? Код при True : Код при False
                 .mapToInt(row ->
                         row[userChoice == 1 ?
                                 Arrays.asList(matrix).indexOf(row) :

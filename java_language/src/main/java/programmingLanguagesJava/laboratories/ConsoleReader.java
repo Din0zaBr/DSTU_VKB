@@ -9,16 +9,14 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ConsoleReader {
-    // Перевод в англ слова, второе взял из stackoverflow.
+
     private static final RuleBasedNumberFormat numberFormat = new RuleBasedNumberFormat(Locale.UK, RuleBasedNumberFormat.SPELLOUT);
 
     public static Object executeTask(Class<?> solutionClass, String numberOfQuestion, Object... args) {
         try {
-            // Получение значения метода из цифры, задавая ему правила.
-            // Все вот эти штуки называются отражениями, здесь нет удобного аналога eval, как в Python.
-            // Как бы говоря есть, но там под капотом JS, который не может работать с Java напрямую.
+
             var methodName = numberFormat.format(Integer.parseInt(numberOfQuestion), "%spellout-ordinal") + "Question";
-            // В случае больше двадцати methodName может вернуть типа: twenty-first
+
             Pattern pattern = Pattern.compile("-(\\w)");
             Matcher matcher = pattern.matcher(methodName);
 
