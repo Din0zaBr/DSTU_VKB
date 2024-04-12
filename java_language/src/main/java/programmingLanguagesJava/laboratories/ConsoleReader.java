@@ -11,7 +11,14 @@ import java.util.regex.Pattern;
 public class ConsoleReader {
 
     private static final RuleBasedNumberFormat numberFormat = new RuleBasedNumberFormat(Locale.UK, RuleBasedNumberFormat.SPELLOUT);
-
+    /**
+          * Описание целой Java функции.
+     *
+     * @param  solutionClass    Объект класса, представляющий класс решения
+     * @param  numberOfQuestion  Строка, представляющая номер вопроса
+     * @param  args             Переменное количество аргументов, передаваемых в метод
+     * @return                  Объект, возвращаемый выполнением метода
+    */
     public static Object executeTask(Class<?> solutionClass, String numberOfQuestion, Object... args) {
         try {
 

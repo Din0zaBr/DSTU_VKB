@@ -5,6 +5,13 @@ import java.util.Random;
 import java.util.stream.Collectors;
 
 public class HelpMethods {
+    /**
+     * Функция для вычисления наибольшего общего делителя (НОД) двух целых чисел с использованием алгоритма Штейна.
+     *
+     * @param a первое целое число для поиска НОД
+     * @param b второе целое число для поиска НОД
+     * @return НОД двух входных целых чисел
+     */
     static int algorithm_stein(int a, int b) {
 
         // GCD(0, b) == b; GCD(a, 0) == a,
@@ -67,6 +74,12 @@ public class HelpMethods {
                 .toArray(int[][]::new);
     }
 
+    /**
+     * Преобразует двумерный массив целых чисел в строковое представление.
+     *
+     * @param matrix двумерный массив целых чисел для преобразования
+     * @return строковое представление двумерного массива
+     */
     static String ToString(int[][] matrix) {
         return Arrays.stream(matrix)
                 .map(x -> Arrays.stream(x).mapToObj(String::valueOf)
