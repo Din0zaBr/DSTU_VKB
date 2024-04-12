@@ -171,7 +171,9 @@ public class Solution {
         var max_x = Arrays.stream(Solution.firstIntStream).max().orElseThrow();
         var max_y = Arrays.stream(Solution.secondIntStream).max().orElseThrow();
         var result = (Math.exp(Math.abs(max_x)) - Math.exp(Math.abs(max_y))) / Math.sqrt(Math.abs(max_x * max_y));
-
+        // String.format - форматирование строки.
+        // %d - целочисленный тип данных
+        // %f - дробный тип данных
         return String.format("z = ( e ^ |%d| - e ^ |%d| ) / sqrt(| %d * %d |) = %f", max_x, max_y, max_x, max_y, result);
     }
 
@@ -182,12 +184,14 @@ public class Solution {
      */
     @SuppressWarnings("unused")
     public static String secondQuestion(String ignoredUnused) {
-        // -> - это лямбда выражение, как в .net
+        // -> - лямбда выражение для удобства. (Вместо анонимного класса)
         var s = Arrays.stream(Solution.firstIntStream).filter(n -> n > 0).sum();
         var t = Arrays.stream(Solution.secondIntStream).filter(n -> n > 0).sum();
         var k = Arrays.stream(Solution.thirdIntStream).filter(n -> n > 0).sum();
         var result = (s + t + k) / 2.0;
-
+        // String.format - форматирование строки.
+        // %d - целочисленный тип данных
+        // %f - дробный тип данных
         return String.format("М = (%d + %d + %d) / 2 = %f", s, t, k, result);
     }
 
@@ -197,11 +201,15 @@ public class Solution {
      */
     @SuppressWarnings("unused")
     public static String thirdQuestion(String ignoredUnused) {
-        // когда мы определяем так самые базовые типы, то нельзя var писать.
+        // когда мы определяем самые базовые типы, то нельзя писать var.
         int m = 4, n = 2;
+        // BigInteger для обработки больших факториалов
         BigInteger factorialM = BigIntegerMath.factorial(m), factorialN = BigIntegerMath.factorial(n), factDiff = BigIntegerMath.factorial(m - n);
         // в Java, к сожалению, нет перегрузки операторов, поэтому тут математические действия делаются через методы
         // Взято с библиотеки
+
+        // divide - деление
+        // multiply - умножение
         var result = factorialM.divide(factorialN.multiply(factDiff));
         return String.format("c = %d! / (%d! * (%d - %d)!) = %d", m, n, m, n, result);
     }
@@ -213,7 +221,7 @@ public class Solution {
      */
     @SuppressWarnings("unused")
     public static String fourthQuestion(String ignoredUnused) {
-        // Здесь я нашел библиотеку, которая генерирует комбинации из (1, 2, 3) по 2 элемента.
+        // Здесь использована библиотека, которая генерирует комбинации из (1, 2, 3) по 2 элемента.
         // map здесь делается то же самое, но есть небольшие разновидности, которые переделывают нам элементы к
         // нужному типу данных. По умолчанию generator возвращает итератор, где каждый элемент - это список с числами.
         var result = Generator.combination(1, 2, 3).simple(2).stream().mapToDouble(x ->
@@ -229,8 +237,9 @@ public class Solution {
     @SuppressWarnings("unused")
     public static String fifthQuestion(String ignoredUnused) {
         // var не дает прописать, надо явно указать
+        // int [][] - массив двумерный
         int[][] arrays = {firstIntStream, secondIntStream, thirdIntStream};
-        // Нет аналога enumerate, поэтому воспользовался таким костылем.
+        // Нет аналога enumerate (перебор элементов), поэтому костыль:
         try {
 
             return "\n" + Arrays.stream(arrays).map(array ->
@@ -260,7 +269,7 @@ public class Solution {
             var min_c = Arrays.stream(thirdIntStream).min().orElseThrow();
             return String.format("min_a = %d -> %d + %d = %d", min_a, min_b, min_c, min_b + min_c);
         }
-
+        // Название класса::метод
         var min_abc_c = Arrays.stream(thirdIntStream).map(Math::abs).min().orElseThrow();
         return String.format("min_a = %d -> 1 + %d = %d", min_a, min_abc_c, 1 + min_abc_c);
     }
@@ -274,6 +283,18 @@ public class Solution {
         var D = new Random().doubles(40).toArray();
 
         var result = Math.pow(
+                // reduce (identity, accumulator)
+                // identity - начальное значение. Если 1 - произведение, если 0 - сумма
+                // accumulator - применяет функцию к элементам массива
+
+                // вход
+                // 1 * 2 = x1
+                // x * 3 = x2
+                // ...
+                // выход
+                // число - x12
+                // a - предыдущее промежуточное значение (результат умножения всех предыдущих элементов)
+                // b - текущий элемент из потока данных.
                 Arrays.stream(D).filter(x -> x > 0 && x < 12).reduce(1, (a, b) -> a * b),
                 1.0 / D.length
         );
