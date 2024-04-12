@@ -167,6 +167,7 @@ public class Solution {
      */
     @SuppressWarnings("unused")
     public static String firstQuestion(String ignoredUnused) {
+        // String ignoredUnused - нужен для того, чтобы не было ошибки, если в методе не будет аргументов
         // orElseTrow возвращает значение, если оно существует, в ином случае будет возращена ошибка
         var max_x = Arrays.stream(Solution.firstIntStream).max().orElseThrow();
         var max_y = Arrays.stream(Solution.secondIntStream).max().orElseThrow();
@@ -239,7 +240,7 @@ public class Solution {
         // var не дает прописать, надо явно указать
         // int [][] - массив двумерный
         int[][] arrays = {firstIntStream, secondIntStream, thirdIntStream};
-        // Нет аналога enumerate (перебор элементов), поэтому костыль:
+        // Нет аналога enumerate (перебор элементов), поэтому костыляка:
         try {
 
             return "\n" + Arrays.stream(arrays).map(array ->
@@ -287,14 +288,16 @@ public class Solution {
                 // identity - начальное значение. Если 1 - произведение, если 0 - сумма
                 // accumulator - применяет функцию к элементам массива
 
+
+                // a - предыдущее промежуточное значение (результат умножения всех предыдущих элементов)
+                // b - текущий элемент из потока данных
+                // То есть
                 // вход
                 // 1 * 2 = x1
-                // x * 3 = x2
+                // x1 * 3 = x2
                 // ...
                 // выход
                 // число - x12
-                // a - предыдущее промежуточное значение (результат умножения всех предыдущих элементов)
-                // b - текущий элемент из потока данных.
                 Arrays.stream(D).filter(x -> x > 0 && x < 12).reduce(1, (a, b) -> a * b),
                 1.0 / D.length
         );
@@ -333,16 +336,16 @@ public class Solution {
     }
 
     /**
-     * 10. Отсортировать массив по возрастанию суммы цифр
-     * Дан одномерный массив, состоящий из натуральных чисел.
+     * 10. Дан одномерный массив, состоящий из натуральных чисел.
      * Выполнить сортировку данного массива по возрастанию суммы цифр чисел.
-     * Например, дан массив чисел [14, 30, 103]. После сортировки он будет таким: [30, 103, 14],
-     * так как сумма цифр числа 30 составляет 3, числа 103 равна 4, числа 14 равна 5.
+     * Например, дан массив чисел [14, 30, 103]. После сортировки: [30, 103, 14],
+     * так как сумма цифр числа 30 составляет 3 + 0 = 3, числа 103 равна 1 + 0 + 3 = 4, числа 14 равна 5.
      */
     @SuppressWarnings("unused")
     public static String tenthQuestion(String ignoredUnused) {
         var array = new Random().ints(50, 1, 10000).toArray();
         var result = Arrays.stream(array)
+                // boxed - метод, который преобразует IntStream в Stream объектов типа Integer.
                 .boxed()
                 .sorted(Comparator.comparingInt(n -> {
 
@@ -390,6 +393,7 @@ public class Solution {
      */
     @SuppressWarnings("unused")
     public static String twelfthQuestion(String number) {
+        // parseInt - преобразование строки в число
         int n = Math.abs(Integer.parseInt(number));
         // копия числа, так как я изменяю n
         var p = n;
@@ -413,6 +417,7 @@ public class Solution {
         int x = Integer.parseInt(number), result = 0;
 
         for (int i = 1; i < 6; i++) {
+            // intValue - преобразование BigInteger в int
             result += (-1) * i * (x / BigIntegerMath.factorial(i).intValue());
         }
 
