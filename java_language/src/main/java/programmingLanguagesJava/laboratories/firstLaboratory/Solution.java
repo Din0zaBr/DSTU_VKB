@@ -17,6 +17,12 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Solution {
+    /**
+     * Генерация массивов, которые содержат определенное количество элементов, сгенерированных с использованием класса Random
+     * ints - генерация случайных целых чисел (20 элементов) в определенном диапазоне (от -100 до 21)
+     * toArray используется для преобразования сгенерированных значений в массив целых чисел
+     * static final - создание статических констант. Нужны для того, чтобы не пересоздавать массивы при каждом вызове функции
+     */
     static final int[] firstIntStream = new Random().ints(20, -100, 21).toArray();
     static final int[] secondIntStream = new Random().ints(15, -100, 16).toArray();
     static final int[] thirdIntStream = new Random().ints(10, -100, 11).toArray();
@@ -27,17 +33,37 @@ public class Solution {
         System.out.print("Введите номер задания: ");
         var question = scanner.nextInt();
 
+        // %d заменяется на значение переменной question
         System.out.printf("---------------------------------------------------\nРезультат %d задания:\n", question);
 
         Object result = switch (question) {
+            /*
+               1. Метод executeTask из класса ConsoleReader принимает класс решения, номер вопроса и аргументы,
+               1.1 String.valueOf - преобразование int в String.
+               1.2 Нужен для того, чтобы преобразовать номер вопроса в строку, так как метод executeTask принимает String.
+               2. Динамически формирует имя метода на основе номера вопроса (например, "seventeenthQuestion"), преобразуя его в CamelCase
+               3. Далее метод находит соответствующий метод в классе решения, используя рефлексию, и вызывает его, передавая аргументы.
+               3.1 Рефлексия - механизм, позволяющий получить информацию о методах и классах во время выполнения программы.
+               3.2 По сути, это возможность программы изучать и изменять свой собственный код во время выполнения программы.
+               4. Если метод не может быть найден или вызван по какой-либо причине, возвращается сообщение "Вы выбрали неверное задание".
+             */
             case 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 18 ->
                     ConsoleReader.executeTask(Solution.class, String.valueOf(question), " ");
 
+            /*
+              По сути, то же самое, однако вместо " ", как в предыдущем case, теперь передаётся scanner.next()
+              scanner.next() - это метод, который возвращает следующее значение из потока ввода
+              yield - это ключевое слово, которое используется для возврата значения из блока switch
+             */
             case 12, 13, 21 -> {
                 System.out.print("Введите ваше число: ");
                 yield ConsoleReader.executeTask(Solution.class, String.valueOf(question), scanner.next());
             }
 
+            /*
+              По сути, то же самое, однако вместо scanner.next(), как в предыдущем case, теперь передаётся scanner.nextLine()
+              scanner.nextLine() - это метод, который возвращает следующую строку из потока ввода
+             */
             case 14, 15 -> {
                 System.out.print("Введите строку: ");
                 scanner.nextLine();
@@ -50,6 +76,10 @@ public class Solution {
                 yield ConsoleReader.executeTask(Solution.class, String.valueOf(question), scanner.nextLine());
             }
 
+            /*
+                1. var используется для объявления переменных с неявным типом.
+                2. При использовании var, компилятор самостоятельно определяет тип переменной на основе выражения, к которому она присваивается.
+             */
             case 17 -> {
                 System.out.println("Введите номер фигуры:\n1.Круг\n2.Прямоугольник\n3.Треугольник");
                 var numberOfFigure = scanner.next();
@@ -78,19 +108,27 @@ public class Solution {
                 yield nineteenthQuestion(scanner.next());
             }
 
+            /*
+                StringBuilder() - нужен для того, чтобы строить строки по частям.
+             */
             case 20 -> {
                 var strBuilder = new StringBuilder();
 
                 while (true) {
                     System.out.print("Вводите числа (для завершения введите 0): ");
                     var number = scanner.next();
-
+                    /*
+                    Метод append - добавляет строку в конец StringBuilder.
+                    (" ") - разделитель, который добавляется после каждого числа.
+                     */
                     strBuilder.append(number).append(" ");
 
                     if (number.equals("0"))
                         break;
                 }
-
+                /*
+                метод toString() - возвращает содержимое StringBuilder в виде строки.
+                 */
                 yield twentiethQuestion(strBuilder.toString());
             }
 
@@ -122,12 +160,14 @@ public class Solution {
 
     /**
      * 1. Вычислить z = Math.exp(Math.abs(max_x)) - Math.exp(Math.abs(max_y))) / Math.sqrt((Math.abs(max_x * max_y)))
-     * где - max_x наибольший элемент массива X(20); max_y - наибольший элемент массива Y(15).
+     * где:
+     * - max_x - наибольший элемент массива X(20);
+     * - max_y - наибольший элемент массива Y(15).
      * Для вычисления наибольшего элемента массива использовать функцию.
      */
     @SuppressWarnings("unused")
     public static String firstQuestion(String ignoredUnused) {
-        // orElseTrow возвращает значение, если оно существует, в ином случае будет возмущена ошибка
+        // orElseTrow возвращает значение, если оно существует, в ином случае будет возращена ошибка
         var max_x = Arrays.stream(Solution.firstIntStream).max().orElseThrow();
         var max_y = Arrays.stream(Solution.secondIntStream).max().orElseThrow();
         var result = (Math.exp(Math.abs(max_x)) - Math.exp(Math.abs(max_y))) / Math.sqrt(Math.abs(max_x * max_y));
