@@ -688,7 +688,9 @@ public class Solution {
     @SuppressWarnings("unused")
     public static String twentyFourthQuestion(String numbers) {
 
-        var splitNumbers = Arrays.stream(numbers.split(" ")).map(Double::parseDouble).iterator();
+        var splitNumbers = Arrays.stream(numbers.split(" "))
+                .map(Double::parseDouble)
+                .iterator();
 
         double[] R = new double[3], U = new double[3];
 
@@ -699,10 +701,14 @@ public class Solution {
             U[i] = I * R[i];
         }
 
-        // Создаем строки с соответствующими напряжениями. Через Decimal есть только округление, которое мне нужно
+        // Создаем строки с соответствующими напряжениями. Через Decimal есть только округление, которое нужно
         // Очень странно, что разработчики не сделали в том же самом Math для этого нужный статический метод.
         var UString = Arrays.stream(U)
-                .mapToObj(number -> BigDecimal.valueOf(number).setScale(2, RoundingMode.HALF_UP).toString())
+                // ToObj - преобразование DoubleStream в Stream объектов типа Double
+                // Округляем до 2 знаков после запятой
+                .mapToObj(number -> BigDecimal.valueOf(number)
+                        .setScale(2, RoundingMode.HALF_UP)
+                        .toString())
                 .collect(Collectors.joining(" "));
 
         return String.format("Напряжение на участках 1, 2, 3 соответственно равны: %s", UString);
