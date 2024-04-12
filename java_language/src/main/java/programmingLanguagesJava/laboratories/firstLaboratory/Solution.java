@@ -477,6 +477,7 @@ public class Solution {
     public static String sixteenthQuestion(String stringWithTwoNumbers) {
         // Здесь будет использоваться алгоритм Штейна для нахождения НОД. Его сложность O(n^2/log(n)^2)
         // По сложности кажется, что он хуже Евклида O(log(min(a, b))), но он быстрее его за счет битовых сдвигов.
+
         var res = stringWithTwoNumbers.split(" ");
         int a = Integer.parseInt(res[0]), b = Integer.parseInt(res[1]);
 
