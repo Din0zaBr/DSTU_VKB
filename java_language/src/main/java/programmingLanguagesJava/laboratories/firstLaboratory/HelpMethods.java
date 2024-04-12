@@ -60,9 +60,6 @@ public class HelpMethods {
 
     static int[][] generateRandomMatrix(int CountRows, int CountColumns) {
         Random random = new Random();
-        // map: Этот метод используется для преобразования элементов потока в примитивные типы данных (int, long, double).
-        // Например, если вы имеете дело с IntStream, LongStream или DoubleStream,
-        // то map применяется для преобразования элементов в другой примитивный тип данных.
         return Arrays.stream(new int[CountRows][CountColumns])
                 .map(row -> Arrays.stream(row)
                         .map(col -> random.nextInt(100)) // Здесь 100 - верхняя граница случайных чисел

@@ -169,8 +169,12 @@ public class Solution {
     public static String firstQuestion(String ignoredUnused) {
         // String ignoredUnused - нужен для того, чтобы не было ошибки, если в методе не будет аргументов
         // orElseTrow возвращает значение, если оно существует, в ином случае будет возращена ошибка
-        var max_x = Arrays.stream(Solution.firstIntStream).max().orElseThrow();
-        var max_y = Arrays.stream(Solution.secondIntStream).max().orElseThrow();
+        var max_x = Arrays.stream(Solution.firstIntStream)
+                .max()
+                .orElseThrow();
+        var max_y = Arrays.stream(Solution.secondIntStream)
+                .max()
+                .orElseThrow();
         var result = (Math.exp(Math.abs(max_x)) - Math.exp(Math.abs(max_y))) / Math.sqrt(Math.abs(max_x * max_y));
         // String.format - форматирование строки.
         // %d - целочисленный тип данных
@@ -186,9 +190,15 @@ public class Solution {
     @SuppressWarnings("unused")
     public static String secondQuestion(String ignoredUnused) {
         // -> - лямбда выражение для удобства. (Вместо анонимного класса)
-        var s = Arrays.stream(Solution.firstIntStream).filter(n -> n > 0).sum();
-        var t = Arrays.stream(Solution.secondIntStream).filter(n -> n > 0).sum();
-        var k = Arrays.stream(Solution.thirdIntStream).filter(n -> n > 0).sum();
+        var s = Arrays.stream(Solution.firstIntStream)
+                .filter(n -> n > 0)
+                .sum();
+        var t = Arrays.stream(Solution.secondIntStream)
+                .filter(n -> n > 0)
+                .sum();
+        var k = Arrays.stream(Solution.thirdIntStream)
+                .filter(n -> n > 0)
+                .sum();
         var result = (s + t + k) / 2.0;
         // String.format - форматирование строки.
         // %d - целочисленный тип данных
@@ -225,9 +235,11 @@ public class Solution {
         // Здесь использована библиотека, которая генерирует комбинации из (1, 2, 3) по 2 элемента.
         // map здесь делается то же самое, но есть небольшие разновидности, которые переделывают нам элементы к
         // нужному типу данных. По умолчанию generator возвращает итератор, где каждый элемент - это список с числами.
-        var result = Generator.combination(1, 2, 3).simple(2).stream().mapToDouble(x ->
-                Math.sqrt(Math.pow(x.getFirst(), 2) + Math.pow(x.getLast(), 2) +
-                        Math.pow(Math.sin(x.getFirst() * x.getLast()), 2))).sum();
+        var result = Generator.combination(1, 2, 3).simple(2).stream()
+                .mapToDouble(x ->
+                        Math.sqrt(Math.pow(x.getFirst(), 2) + Math.pow(x.getLast(), 2) +
+                                Math.pow(Math.sin(x.getFirst() * x.getLast()), 2)))
+                .sum();
         return String.format("s = sqrt(1 + 4 + sin(2)^2) + sqrt(1 + 9 + sin(9)^2) + sqrt(4 + 9 + sin(6)^2 = %f", result);
     }
 
@@ -243,10 +255,14 @@ public class Solution {
         // Нет аналога enumerate (перебор элементов), поэтому костыляка:
         try {
 
-            return "\n" + Arrays.stream(arrays).map(array ->
+            return "\n" + Arrays.stream(arrays)
+                    .map(array ->
                             "Среднее значение массива " +
                                     Arrays.toString(array) + ": " +
-                                    String.format("%.3f", Arrays.stream(array).filter(x -> x > 0).average().orElseThrow()))
+                                    String.format("%.3f", Arrays.stream(array)
+                                            .filter(x -> x > 0)
+                                            .average()
+                                            .orElseThrow()))
 
                     .collect(Collectors.joining("\n"));
 
@@ -266,12 +282,19 @@ public class Solution {
         var min_a = Math.abs(Arrays.stream(firstIntStream).min().orElseThrow());
 
         if (min_a > 10) {
-            var min_b = Arrays.stream(secondIntStream).min().orElseThrow();
-            var min_c = Arrays.stream(thirdIntStream).min().orElseThrow();
+            var min_b = Arrays.stream(secondIntStream)
+                    .min()
+                    .orElseThrow();
+            var min_c = Arrays.stream(thirdIntStream)
+                    .min()
+                    .orElseThrow();
             return String.format("min_a = %d -> %d + %d = %d", min_a, min_b, min_c, min_b + min_c);
         }
         // Название класса::метод
-        var min_abc_c = Arrays.stream(thirdIntStream).map(Math::abs).min().orElseThrow();
+        var min_abc_c = Arrays.stream(thirdIntStream)
+                .map(Math::abs)
+                .min()
+                .orElseThrow();
         return String.format("min_a = %d -> 1 + %d = %d", min_a, min_abc_c, 1 + min_abc_c);
     }
 
@@ -298,7 +321,9 @@ public class Solution {
                 // ...
                 // выход
                 // число - x12
-                Arrays.stream(D).filter(x -> x > 0 && x < 12).reduce(1, (a, b) -> a * b),
+                Arrays.stream(D)
+                        .filter(x -> x > 0 && x < 12)
+                        .reduce(1, (a, b) -> a * b),
                 1.0 / D.length
         );
 
@@ -314,7 +339,9 @@ public class Solution {
     public static String eighthQuestion(String ignoredUnused) {
         var A = new Random().ints(80).toArray();
 
-        var result = Arrays.stream(A).filter(n -> n < 0 && Math.abs(n) % 2 == 1).sum();
+        var result = Arrays.stream(A)
+                .filter(n -> n < 0 && Math.abs(n) % 2 == 1)
+                .sum();
         return String.format("Массив: %s\nСумма: %d", Arrays.toString(A), result);
     }
 
@@ -327,7 +354,9 @@ public class Solution {
     public static String ninthQuestion(String ignoredUnused) {
         try {
 
-            var result = Arrays.stream(Solution.firstIntStream).average().orElseThrow();
+            var result = Arrays.stream(Solution.firstIntStream)
+                    .average()
+                    .orElseThrow();
             return String.format("Массив: %s\nСреднее арифметическое - %f", Arrays.toString(Solution.firstIntStream), result);
 
         } catch (NoSuchElementException e) {
@@ -371,18 +400,24 @@ public class Solution {
     public static String eleventhQuestion(String ignoredUnused) {
         var array = new Random().ints(50, 1, 10000).toArray();
         var res = "Исходный массив: " + Arrays.toString(array) + "\n";
-        res += "Отсортированный массив: " + Arrays.stream(array).boxed().sorted().toList() + "\n";
-        res += "Сумма цифр каждого числа: " + Arrays.stream(array).map(n -> {
+        res += "Отсортированный массив: " + Arrays.stream(array)
+                .boxed()
+                .sorted()
+                .toList() + "\n";
+        res += "Сумма цифр каждого числа: " + Arrays.stream(array)
+                .map(n -> {
 
-            int sumOfDigits = 0;
-            n = Math.abs(n);
+                    int sumOfDigits = 0;
+                    n = Math.abs(n);
 
-            while (n > 0) {
-                sumOfDigits += n % 10;
-                n /= 10;
-            }
-            return sumOfDigits;
-        }).boxed().toList();
+                    while (n > 0) {
+                        sumOfDigits += n % 10;
+                        n /= 10;
+                    }
+                    return sumOfDigits;
+                })
+                .boxed()
+                .toList();
 
         return res;
     }
@@ -395,7 +430,7 @@ public class Solution {
     public static String twelfthQuestion(String number) {
         // parseInt - преобразование строки в число
         int n = Math.abs(Integer.parseInt(number));
-        // копия числа, так как я изменяю n
+        // копия числа, так как n меняется
         var p = n;
 
         int count = 0;
@@ -432,16 +467,6 @@ public class Solution {
      */
     @SuppressWarnings("unused")
     public static String fourteenthQuestion(String words) {
-        /*
-         List.of - переделывает в интерфейс List, потом приходится вручную кастовать к ArrayList
-         Collections.swap просит изменяемый объект, что вполне логично, поэтому переделал к ArrayList.
-                var src = new ArrayList<>(List.of(words.split(" ")));
-                var len = src.size();
-
-                for (var i = 0; i <= (len / 2); i++)
-                    Collections.swap(src, len - i - 1, i);
-        */
-
         return String.join(" ", new ArrayList<>(List.of(words.split(" ")).reversed()));
     }
 
@@ -493,7 +518,6 @@ public class Solution {
      */
     @SuppressWarnings("unused")
     public static String seventeenthQuestion(String parameters) {
-        // Подумать над вводом в GUI
         var splitParameters = parameters.split(" ");
 
         try {
@@ -527,10 +551,16 @@ public class Solution {
         var matrixString = HelpMethods.ToString(matrix);
 
         // Наш список с суммами.
-        var sums = Arrays.stream(matrix).mapToInt(row -> Arrays.stream(row).sum()).boxed().toList();
+        var sums = Arrays.stream(matrix)
+                .mapToInt(row -> Arrays.stream(row)
+                        .sum())
+                .boxed()
+                .toList();
 
-        // Странно, что в обычном массиве не реализован indexOf, только в списках есть данный метод.
-        var index = sums.indexOf(sums.stream().max(Integer::compare).orElseThrow());
+        // Метод indexOf есть только в списках, что странно, так как в массиве он также нужен
+        var index = sums.indexOf(sums.stream()
+                .max(Integer::compare)
+                .orElseThrow());
 
         return String.format(
                 "Наша матрица:\n%s\nМассив с суммами:\n%s\nСтрока, где максимальная сумма %s, с индексом %d, сумма - %d",
@@ -548,16 +578,13 @@ public class Solution {
      */
     @SuppressWarnings("unused")
     public static String nineteenthQuestion(String parameter) {
-        // Хотел на самом деле поискать аналог Numpy, но здесь так много библиотек, что вообще непонятно какую можно исп.
-        // Пришлось вот так вручную через StreamApi делать, долго мучался, чтобы заработало.
 
-        // Создаем матрицу с использованием Stream API и заполняем случайными числами
         var matrix = HelpMethods.generateRandomMatrix(6, 6);
 
         var userChoice = Integer.parseInt(parameter);
 
         var result = Arrays.stream(matrix)
-                // Условие ? Код при True : Код при False
+                // Напоминание: Условие ? Код при True : Код при False
                 .mapToInt(row ->
                         row[userChoice == 1 ?
                                 Arrays.asList(matrix).indexOf(row) :
@@ -576,7 +603,9 @@ public class Solution {
     public static String twentiethQuestion(String numbers) {
         var strBuilder = new StringBuilder();
 
-        var splitNumbers = Arrays.stream(numbers.split(" ")).mapToInt(Integer::parseInt).iterator();
+        var splitNumbers = Arrays.stream(numbers.split(" "))
+                .mapToInt(Integer::parseInt)
+                .iterator();
 
         while (true) {
             var number = splitNumbers.next();
@@ -624,7 +653,9 @@ public class Solution {
     @SuppressWarnings("unused")
     public static String twentySecondQuestion(String numbers) {
 
-        var splitNumbers = Arrays.stream(numbers.split(" ")).map(Integer::parseInt).iterator();
+        var splitNumbers = Arrays.stream(numbers.split(" "))
+                .map(Integer::parseInt)
+                .iterator();
 
         int start = splitNumbers.next(), end = splitNumbers.next();
 
@@ -640,7 +671,9 @@ public class Solution {
     @SuppressWarnings("unused")
     public static String twentyThirdQuestion(String numbers) {
 
-        var splitNumbers = Arrays.stream(numbers.split(" ")).map(Double::parseDouble).iterator();
+        var splitNumbers = Arrays.stream(numbers.split(" "))
+                .map(Double::parseDouble)
+                .iterator();
 
         double U = splitNumbers.next(), R = splitNumbers.next();
 
