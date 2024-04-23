@@ -78,7 +78,8 @@ public class Solution {
 
             /*
                 1. var используется для объявления переменных с неявным типом.
-                2. При использовании var, компилятор самостоятельно определяет тип переменной на основе выражения, к которому она присваивается.
+                2. При использовании var, компилятор самостоятельно определяет тип переменной на основе выражения,
+                к которому она присваивается.
              */
             case 17 -> {
                 System.out.println("Введите номер фигуры:\n1.Круг\n2.Прямоугольник\n3.Треугольник");
@@ -212,10 +213,12 @@ public class Solution {
      */
     @SuppressWarnings("unused")
     public static String thirdQuestion(String ignoredUnused) {
-        // когда мы определяем самые базовые типы, то нельзя писать var.
+        // когда мы определяем самые базовые(явные, тривиальные) типы, то нельзя писать var.
         int m = 4, n = 2;
         // BigInteger для обработки больших факториалов
-        BigInteger factorialM = BigIntegerMath.factorial(m), factorialN = BigIntegerMath.factorial(n), factDiff = BigIntegerMath.factorial(m - n);
+        BigInteger factorialM = BigIntegerMath.factorial(m),
+                factorialN = BigIntegerMath.factorial(n),
+                factDiff = BigIntegerMath.factorial(m - n);
         // в Java, к сожалению, нет перегрузки операторов, поэтому тут математические действия делаются через методы
         // Взято с библиотеки
 
@@ -237,6 +240,7 @@ public class Solution {
         // нужному типу данных. По умолчанию generator возвращает итератор, где каждый элемент - это список с числами.
         var result = Generator.combination(1, 2, 3).simple(2).stream()
                 .mapToDouble(x ->
+                        // Происходит итерация по комбинациям и вычисляется значение для каждой комбинации
                         Math.sqrt(Math.pow(x.getFirst(), 2) + Math.pow(x.getLast(), 2) +
                                 Math.pow(Math.sin(x.getFirst() * x.getLast()), 2)))
                 .sum();
@@ -324,6 +328,7 @@ public class Solution {
                 Arrays.stream(D)
                         .filter(x -> x > 0 && x < 12)
                         .reduce(1, (a, b) -> a * b),
+                // умножаем все элементы и затем берём корень степени, равной количеству элементов -> получаем среднее геометрическое
                 1.0 / D.length
         );
 
@@ -374,7 +379,8 @@ public class Solution {
     public static String tenthQuestion(String ignoredUnused) {
         var array = new Random().ints(50, 1, 10000).toArray();
         var result = Arrays.stream(array)
-                // boxed - метод, который преобразует IntStream в Stream объектов типа Integer.
+                // boxed - метод, который преобразует IntStream в Stream объектов типа Integer, так как
+                // метод sorted требует Stream объектов, а не IntStream.
                 .boxed()
                 .sorted(Comparator.comparingInt(n -> {
 
@@ -501,7 +507,7 @@ public class Solution {
     @SuppressWarnings("unused")
     public static String sixteenthQuestion(String stringWithTwoNumbers) {
         // Здесь будет использоваться алгоритм Штейна для нахождения НОД. Его сложность O(n^2/log(n)^2)
-        // По сложности кажется, что он хуже Евклида O(log(min(a, b))), но он быстрее его за счет битовых сдвигов.
+        // По сложности кажется, что он хуже Евклида O(log(min(a, b))), но он быстрее его за счет битовых сдвигов
 
         var res = stringWithTwoNumbers.split(" ");
         int a = Integer.parseInt(res[0]), b = Integer.parseInt(res[1]);
@@ -586,8 +592,9 @@ public class Solution {
         var result = Arrays.stream(matrix)
                 // Напоминание: Условие ? Код при True : Код при False
                 .mapToInt(row ->
-                        row[userChoice == 1 ?
+                        row[userChoice == 1 ? // Если пользователь выбрал 1, берется элемент по индексу строки
                                 Arrays.asList(matrix).indexOf(row) :
+                                // Иначе берется элемент по индексу, равному длине матрицы минус 1 минус индекс текущей строки.
                                 matrix.length - 1 - Arrays.asList(matrix).indexOf(row)])
                 .sum();
 
@@ -602,10 +609,11 @@ public class Solution {
     @SuppressWarnings("unused")
     public static String twentiethQuestion(String numbers) {
         var strBuilder = new StringBuilder();
-
         var splitNumbers = Arrays.stream(numbers.split(" "))
+                // Разделение входной строки на числа, преобразование их в целочисленные значения и
                 .mapToInt(Integer::parseInt)
                 .iterator();
+                // создание итератора для обхода этих чисел.
 
         while (true) {
             var number = splitNumbers.next();
