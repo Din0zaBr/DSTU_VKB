@@ -263,6 +263,7 @@ public class Solution {
                     .map(array ->
                             "Среднее значение массива " +
                                     Arrays.toString(array) + ": " +
+                                    // форматирует десятичное число так, чтобы у него было 3 десятичных знака.
                                     String.format("%.3f", Arrays.stream(array)
                                             .filter(x -> x > 0)
                                             .average()
@@ -490,7 +491,7 @@ public class Solution {
 
         var value = Integer.parseInt(valueForSearch);
 
-        // В Java есть встроенный бинарный поиск, зачем писать свой?
+        // В Java есть встроенный бинарный поиск =)
         int index = Arrays.binarySearch(sortedRandArr, value);
 
 
@@ -613,7 +614,7 @@ public class Solution {
                 // Разделение входной строки на числа, преобразование их в целочисленные значения и
                 .mapToInt(Integer::parseInt)
                 .iterator();
-                // создание итератора для обхода этих чисел.
+        // создание итератора для обхода этих чисел.
 
         while (true) {
             var number = splitNumbers.next();
@@ -681,6 +682,7 @@ public class Solution {
 
         var splitNumbers = Arrays.stream(numbers.split(" "))
                 .map(Double::parseDouble)
+                // позволяет перебирать элементы в коллекции один за другим
                 .iterator();
 
         double U = splitNumbers.next(), R = splitNumbers.next();

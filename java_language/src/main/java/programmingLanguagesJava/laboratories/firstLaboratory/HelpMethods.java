@@ -86,8 +86,11 @@ public class HelpMethods {
      */
     static String ToString(int[][] matrix) {
         return Arrays.stream(matrix)
-                .map(x -> Arrays.stream(x).mapToObj(String::valueOf)
+                .map(x -> Arrays.stream(x)
+                        .mapToObj(String::valueOf)
                         .collect(Collectors.joining(" ")))
+                // объединяет строки, которые были созданы в результате обработки каждой строки двумерного массива,
+                // используя разделитель строк, который зависит от операционной системы
                 .collect(Collectors.joining(System.lineSeparator()));
     }
 }
