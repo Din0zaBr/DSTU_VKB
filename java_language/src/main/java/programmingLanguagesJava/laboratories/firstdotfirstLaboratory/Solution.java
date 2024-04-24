@@ -67,8 +67,7 @@ public class Solution {
         System.out.println(result);
 
     }
-    // аннотация с собакой - просто указание IDE, что не надо ругаться, что данные методы не используются
-    // Здесь IDEA явно не видит запуск методов, он в main происходит для неё неявно
+
 
     /**
      * 1. Ввести n строк с консоли, найти самую короткую строку. Вывести эту строку и ее длину.
@@ -107,7 +106,10 @@ public class Solution {
         var splitStrings = strings.split("\\s+");
 
         // Получаем среднюю длину, проходя по всему списку
-        var averageLength = Arrays.stream(splitStrings).mapToInt(String::length).average().orElseThrow();
+        var averageLength = Arrays.stream(splitStrings)
+                .mapToInt(String::length)
+                .average()
+                .orElseThrow();
 
         // Собираем те предложения, которые меньше по длине
         var result = Arrays.stream(splitStrings)
@@ -121,6 +123,7 @@ public class Solution {
      * 4. В каждом слове текста k-ю букву заменить заданным символом.
      * Если k больше длины слова, корректировку не выполнять.
      */
+
     @SuppressWarnings("unused")
     public static String fourthQuestion(String strings) {
 
@@ -128,7 +131,7 @@ public class Solution {
 
         var index = Integer.parseInt(letterAndIndex[0]);
         var letter = letterAndIndex[1];
-
+        // Не до конца понял
         // 2 split'а с той целью, чтобы сохранить паттерн текста и не выводит все в одну строку для удобства чтения.
         var result = Arrays.stream(Solution.text.split("\n"))
                 .map(line -> Arrays.stream(line.split("\\s+"))
@@ -155,7 +158,9 @@ public class Solution {
     @SuppressWarnings("unused")
     public static String fifthQuestion(String strings) {
 
-        var chars = String.join("", strings.split("\\s+")).chars().mapToObj(c -> (char) c)
+        var chars = String.join("", strings.split("\\s+"))
+                .chars()
+                .mapToObj(c -> (char) c)
                 .toList();
 
         var symbols = chars.stream()
@@ -182,6 +187,7 @@ public class Solution {
     public static String sixthQuestion(String strings) {
         return String.format(
                 "После удаления всех не нужных символов:\n%s",
+                //  заменяет все символы в строке, которые не являются буквами или пробелами
                 strings.replaceAll("[^A-Za-zа-яА-Я\\s]", "")
         );
     }
