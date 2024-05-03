@@ -13,75 +13,91 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane fx:id="mainInterface" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #3B3F41; -fx-border-radius: 25; -fx-background-radius: 15;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="programmingLanguagesJava.laboratories.GUI.controllers.menu.Menu">
+<BorderPane fx:id="menuRoot" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #2E3348; -fx-border-radius: 30; -fx-background-radius: 18;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="programmingLanguagesJava.laboratories.GUI.controllers.menu.Menu">
    <left>
       <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="560.0" fitWidth="380.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@images/abstract-pattern.png" />
-               </image>
-            </ImageView>
-            <GridPane layoutX="9.0" layoutY="39.0" prefHeight="152.0" prefWidth="375.0">
+            <GridPane layoutX="19.0" layoutY="39.0" prefHeight="80.0" prefWidth="101.0" scaleShape="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="550.0">
                <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="50.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="70.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="50.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="225.0" minWidth="10.0" prefWidth="137.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="177.0" minWidth="10.0" prefWidth="40.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="177.0" minWidth="10.0" prefWidth="142.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="177.0" minWidth="10.0" prefWidth="40.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="225.0" minWidth="10.0" prefWidth="139.0" />
                </columnConstraints>
                <rowConstraints>
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Text fx:id="timeDisplay" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="00:00:00" wrappingWidth="99.1875" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                  <Text fx:id="minutesTimer" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="00" textAlignment="CENTER" wrappingWidth="99.1875" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                      <font>
-                        <Font name="Arial Black" size="60.0" />
+                        <Font name="Comic Sans MS Bold Italic" size="15.0" />
                      </font>
                      <GridPane.margin>
-                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                      </GridPane.margin>
                   </Text>
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text=":" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                  <Text fx:id="hourTimer" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="00" textAlignment="CENTER" wrappingWidth="98.552734375" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                      <font>
-                        <Font name="Arial Black" size="50.0" />
+                        <Font name="Comic Sans MS Bold Italic" size="15.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text fx:id="secondsTimer" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="00" textAlignment="CENTER" wrappingWidth="96.552734375" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                     <font>
+                        <Font name="Comic Sans MS Bold Italic" size="15.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text=":" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                     <font>
+                        <Font name="Comic Sans MS Bold Italic" size="15.0" />
                      </font>
                   </Text>
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text=":" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text=":" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                      <font>
-                        <Font name="Arial Black" size="50.0" />
+                        <Font name="Comic Sans MS Bold Italic" size="15.0" />
                      </font>
                   </Text>
                </children>
             </GridPane>
+            <Label alignment="CENTER" layoutX="132.0" layoutY="37.0" prefHeight="56.0" prefWidth="509.0" text="Меню" textFill="WHITE">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="40.0" />
+               </font>
+            </Label>
+            <ImageView layoutX="88.0" layoutY="37.0">
+               <image>
+                  <Image url="@giphy.gif" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </left>
    <right>
       <AnchorPane prefHeight="600.0" prefWidth="415.0" BorderPane.alignment="CENTER">
          <children>
-            <Label alignment="CENTER" layoutX="150.0" layoutY="40.0" prefHeight="56.0" prefWidth="118.0" text="Интерфейс" textFill="WHITE">
+            <Button fx:id="ButtonLabs" layoutX="-384.0" layoutY="190.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="75.0" prefWidth="739.0" style="-fx-background-color: #008800; -fx-background-radius: 15;" stylesheets="@../stageFiles/Styles.css" text="Лабораторные работы" textFill="WHITE">
                <font>
-                  <Font name="Arial Black" size="40.0" />
-               </font>
-            </Label>
-            <AnchorPane layoutX="108.0" layoutY="94.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="4.0" prefWidth="200.0" style="-fx-background-color: #ffffff; -fx-background-radius: 10;" />
-            <Button fx:id="tasksButton" layoutX="75.0" layoutY="190.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="75.0" prefWidth="280.0" style="-fx-background-color: #5c5ce4; -fx-background-radius: 15;" stylesheets="@../stageFiles/Styles.css" text="Задачи" textFill="WHITE">
-               <font>
-                  <Font name="Arial Black" size="20.0" />
+                  <Font name="Comic Sans MS Bold" size="20.0" />
                </font>
             </Button>
-            <Button fx:id="projectsButton" layoutX="78.0" layoutY="329.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="75.0" prefWidth="280.0" style="-fx-background-color: #5c5ce4; -fx-background-radius: 15;" stylesheets="@../stageFiles/Styles.css" text="Проекты" textFill="WHITE">
+            <Button fx:id="ButtonProject" layoutX="-379.0" layoutY="330.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="75.0" prefWidth="737.0" style="-fx-background-color: #008800; -fx-background-radius: 15;" stylesheets="@../stageFiles/Styles.css" text="Проект" textFill="WHITE">
                <font>
-                  <Font name="Arial Black" size="20.0" />
+                  <Font name="Comic Sans MS Bold" size="20.0" />
                </font>
             </Button>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="272.0" layoutY="420.0" pickOnBounds="true" preserveRatio="true">
+            <Button fx:id="exitButton" layoutX="361.0" layoutY="14.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="28.0" stylesheets="@../stageFiles/Styles.css" />
+            <AnchorPane layoutX="-108.0" layoutY="96.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="4.0" prefWidth="174.0" style="-fx-background-color: #ffffff; -fx-background-radius: 10;" AnchorPane.bottomAnchor="500.0" AnchorPane.leftAnchor="-108.0" AnchorPane.rightAnchor="313.0" AnchorPane.topAnchor="96.0" />
+            <ImageView layoutX="212.0" layoutY="40.0">
                <image>
-                  <Image url="@dynamic-gif.gif" />
+                  <Image url="@giphy.gif" />
                </image>
             </ImageView>
-            <Button fx:id="exitButton" layoutX="361.0" layoutY="14.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="28.0" stylesheets="@../stageFiles/Styles.css" />
          </children>
       </AnchorPane>
    </right>
