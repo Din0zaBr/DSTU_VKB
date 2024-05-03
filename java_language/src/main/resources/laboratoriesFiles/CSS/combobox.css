@@ -3,12 +3,12 @@
 }
 
 .combo-box .increment-arrow, .combo-box .decrement-arrow {
-    -fx-background-color: #9e5ce4; /* Цвет стрелочек у ползунка ползунка */
+    -fx-background-color: #008800; /* Цвет стрелочек у ползунка ползунка */
     -fx-border-width: 1px;
 }
 
 .combo-box .thumb {
-    -fx-background-color: #9e5ce4;
+    -fx-background-color: #008800;
 }
 
 .combo-box .track {
@@ -17,7 +17,7 @@
 }
 
 .combo-box {
-    -fx-background-color: #9e5ce4;
+    -fx-background-color: #008800;
     -fx-border-color: #ccc;
     -fx-border-radius: 3px;
     -fx-padding: 5px;
@@ -37,7 +37,7 @@
 }
 
 .combo-box .list-view {
-    -fx-background-color: #9e5ce4;
+    -fx-background-color: #008800;
     -fx-border-color: #ccc;
     -fx-border-radius: 3px;
 }
@@ -50,5 +50,5 @@
 
 .combo-box .list-view .list-cell {
     -fx-padding: 5px;
-    -fx-background-color: #9e5ce4;
+    -fx-background-color: #008800;
 }
