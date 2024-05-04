@@ -11,6 +11,9 @@ import java.util.regex.Pattern;
 public class ConsoleReader {
 
     private static final RuleBasedNumberFormat numberFormat = new RuleBasedNumberFormat(Locale.UK, RuleBasedNumberFormat.SPELLOUT);
+    // Locale.UK для определения специфических правил форматирования чисел, таких как порядок цифр, разделители и т. д.,
+    // соответствующих британской локали (специфическая региональная настройка)
+
 
     /**
      * @param solutionClass    Объект класса, представляющий класс решения
@@ -39,9 +42,14 @@ public class ConsoleReader {
             // С помощью рефлексии получается метод из класса solutionClass с соответствующим именем и типами аргументов.
             Class<?>[] paramTypes = new Class[args.length];
             for (int i = 0; i < args.length; i++) {
+                // Для каждого аргумента определяется его тип и добавляется в массив.
                 paramTypes[i] = args[i].getClass();
             }
             // Вызывается найденный метод с переданными аргументами и возвращается результат выполнения.
+            /*
+             * p.s Используя рефлексию, находится метод с именем, сформированным в строке str, и типами аргументов из массива paramTypes
+             * Затем этот метод вызывается на объекте solutionClass с переданными аргументами args и возвращается результат выполнения.
+             */
             Method method = solutionClass.getMethod(str.toString(), paramTypes);
             return method.invoke(solutionClass.getDeclaredConstructor().newInstance(), args);
         } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException |
