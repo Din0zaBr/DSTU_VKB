@@ -74,7 +74,7 @@ public class Solution {
      */
     @SuppressWarnings("unused")
     public static String firstQuestion(String strings) {
-
+                                                                         //  одно или более пробельных символов
         var stringWithMinimalLength = Arrays.stream(strings.split("\\s+"))
                 .min(Comparator.comparing(String::length))
                 .orElse("Вы не ввели строки для нахождения! ");
@@ -132,7 +132,7 @@ public class Solution {
         var index = Integer.parseInt(letterAndIndex[0]);
         var letter = letterAndIndex[1];
         // Не до конца понял
-        // 2 split'а с той целью, чтобы сохранить паттерн текста и не выводит все в одну строку для удобства чтения.
+        // 2 split'а с той целью, чтобы сохранить паттерн текста и не выводить все в одну строку для удобства чтения.
         var result = Arrays.stream(Solution.text.split("\n"))
                 .map(line -> Arrays.stream(line.split("\\s+"))
                         .map(word -> {
@@ -159,6 +159,7 @@ public class Solution {
     public static String fifthQuestion(String strings) {
 
         var chars = String.join("", strings.split("\\s+"))
+                // для преобразования строки в поток целых чисел
                 .chars()
                 .mapToObj(c -> (char) c)
                 .toList();
@@ -201,7 +202,7 @@ public class Solution {
         var result = Arrays.stream(Solution.text.split("\n"))
 
                 .map(line -> Arrays.stream(line.split("\\s+"))
-
+                        // если оба истинны -> удаляем слово
                         .filter(word -> !(word.length() == Integer.parseInt(lengthStr) &&
                                 Pattern.matches("^[^aeiouAEIOUЙйУуЕеОоЭэИиЯяЫыАаЮю].*", word)))
 
@@ -241,7 +242,9 @@ public class Solution {
         // привет как
         // дела
         // -> ["привет", "как", "дела"]
+        // // Разделение строки на слова
         var words = Arrays.stream(strings.split("\\s+"))
+                // Разделение каждого слова на подстроки по пробелам
                 .flatMap(word -> Arrays.stream(word.split("\\s+")))
                 .toList();
 
@@ -253,6 +256,7 @@ public class Solution {
                 result.add(
                         String.format("Слово: '%s' появляется %d раза в тексте",
                                 word,
+                                                                        // ищет вхождения слова в строке, \\b - граница слова
                                 HelpMethods.findAll(sentence, String.format("\\b%s\\b", word)).size())
                 ));
 
@@ -271,8 +275,8 @@ public class Solution {
             var vowelsCount = HelpMethods.countVowels(sentence);
             var consonantsCount = HelpMethods.countConsonants(sentence);
 
-            result.append(String.format("В предложении '%s' %s букв: гласных - %d, согласных - %d%n",
-                    sentence, (vowelsCount > consonantsCount) ? "гласных больше" : "согласных больше",
+            result.append(String.format("В предложении '%s'" +"\n" + " %s букв: гласных - %d, согласных - %d%n",
+                    sentence, (vowelsCount > consonantsCount) ? "больше гласных " : "больше согласных",
                     vowelsCount, consonantsCount));
 
         });
@@ -287,7 +291,6 @@ public class Solution {
     @SuppressWarnings("unused")
     public static String eleventhQuestion(String strings) {
 
-        // Я не совсем понимаю почему streamApi код возвращает Object[], тут приходится вручную кастовать к (Point[])
         var points = HelpMethods.cordsFromConsole(strings).toArray();
 
         List<Triangle> triangles = HelpMethods.getTriangleList(points);
@@ -297,7 +300,8 @@ public class Solution {
                 .max(Comparator.comparingDouble(Triangle::getPerimeter))
                 .orElse(null);
 
-
+        // Если условие, проверяемое с помощью assert, истинно, то программа продолжает свое выполнение без каких-либо прерываний.
+        // Если условие, проверяемое с помощью assert, ложно, то программа выдаст ошибку и прервет свою работу.
         assert maxPerimeterTriangle != null;
 
         return String.format(

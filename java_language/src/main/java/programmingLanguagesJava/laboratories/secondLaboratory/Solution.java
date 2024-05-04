@@ -49,6 +49,7 @@ public class Solution {
     public String thirdQuestion(String ignoreUnused) {
         short number = 9;
         char zero = '0';
+        // Character.digit используется для преобразования символа ch в его числовое значение в системе счисления с основанием radix
         int nine = Character.digit(zero, 10) + number;
         return String.format("Правильный ответ: %d", nine);
     }
@@ -58,12 +59,12 @@ public class Solution {
      */
     @SuppressWarnings("unused")
     public String fourthQuestion(String ignoreUnused) {
-        double d = (short) 2.50256e2d;
-        char c = 'd';
-        short s = (short) 2.22;
+        double d = (short) 2.50256e2d; // 250.256
+        char c = 'd'; // ASCII = 100
+        short s = (short) 2.22; // 2
         int i = 150000;
         float f = 0.50f;
-        double result = f + ((double) i / c) - (d * s) - 500e-3;
+        double result = f + ((double) i / c) - (d * s) - 500e-3; // 0.5
         return String.format("result = %.1f", result);
     }
 
@@ -75,7 +76,7 @@ public class Solution {
         long l = 1234_564_890L;
         int x = 0b1000_1100_1010; //бинарность
         double m = (byte) 110_987_654_6299.123_34;
-        float f = 10 + ++x - (float) m;
+        float f = (float) (l ++ +10 + ++x -  m);
         l = (long) f / 1000;
         return String.format("Ответ: %d", l);
     }

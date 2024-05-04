@@ -26,7 +26,9 @@ public class HelpMethods {
      * @return Возвращает количество согласных букв.
      */
     static long countConsonants(String str) {
-        return str.toLowerCase(Locale.ROOT).chars()
+        return str.toLowerCase(Locale.ROOT)
+                // для преобразования строки в поток целых чисел
+                .chars()
                 .mapToObj(c -> (char) c)
                 .filter(c -> Character.isLetter(c) && countVowels(String.valueOf(c)) != 1)
                 .count();
@@ -41,22 +43,28 @@ public class HelpMethods {
 
     static long countVowels(String str) {
         Set<Character> vowels = Stream.of('а', 'о', 'у', 'ы', 'э', 'е', 'ё', 'и', 'ю', 'я',
-                'a', 'e', 'i', 'o', 'u').collect(Collectors.toSet());
+                'a', 'e', 'i', 'o', 'u')
+                .collect(Collectors.toSet());
         //Locale.ROOT представляет собой константу в классе Locale в Java, предназначенную для представления
         // нейтральной локали.
-        // Нейтральная локаль означает отсутствие спецификации конкретного региона, языка или варианта.
-        return str.toLowerCase(Locale.ROOT).chars()
+        // Нейтральная локаль - отсутствие спецификации конкретного региона, языка или варианта.
+        return str.toLowerCase(Locale.ROOT)
+                // для преобразования строки в поток целых чисел
+                .chars()
                 .mapToObj(c -> (char) c)
                 .filter(vowels::contains)
                 .count();
     }
 
     /**
-     * В Java нет аналога re.findall из Python, поэтому написал своё, так сказать.
+     * В Java нет аналога re.findall из Python, поэтому написал своё
+     * @param sentence строка, в которой мы ищем совпадения
+     * @param regex это строка, содержащая регулярное выражение, которое будет использоваться для поиска совпадений в строке.
      */
     static List<String> findAll(String sentence, String regex) {
         List<String> matches = new ArrayList<>();
         // Здесь флаги немного по-другому называются относительно Python, тут добавляю поддержку UNICODE и игнорирую регистр
+        // метод, который компилирует регулярное выражение в объект Pattern
         Pattern pattern = Pattern.compile(regex, Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CHARACTER_CLASS);
         Matcher matcher = pattern.matcher(sentence);
 
@@ -105,7 +113,6 @@ public class HelpMethods {
      */
     static List<Triangle> getTriangleList(Object[] points) {
         List<Triangle> triangles = new ArrayList<>();
-        // Как сделать за O(n^2) я за весь день и не придумал, очень тяжелая для этого задача
         for (int i = 0; i < points.length - 2; i++) {
             for (int j = i + 1; j < points.length - 1; j++) {
                 for (int k = j + 1; k < points.length; k++) {
@@ -121,7 +128,8 @@ public class HelpMethods {
      * Преобразование точек из строк в java.awt.Point
      */
     static Stream<java.awt.Point> cordsFromConsole(String strings) {
-        return Arrays.stream(strings.split("\n")).map(cord -> {
+        return Arrays.stream(strings.split("\n"))
+                .map(cord -> {
 
             var pattern = Pattern.compile("\\(?\\d+, \\d+\\)?");
             var matcher = pattern.matcher(cord);

@@ -98,7 +98,10 @@ public class Solution {
         // Наш список со строками, которые ввел пользователь
         var ListStrings = strings.split("\\s+");
         // Находим среднюю длину строк
-        var averageLength = Arrays.stream(ListStrings).mapToInt(String::length).average().orElseThrow();
+        var averageLength = Arrays.stream(ListStrings)
+                .mapToInt(String::length)
+                .average()
+                .orElseThrow();
         // Решил сделать так, а не через StreamApi, чтобы за один проход расположить элементы по контейнерам.
         // В одном случае сложность O(n), а в другом O(2*n), но 2 не учитывается как мы помним, но уже поступил так.
         var stringThatAreLonger = new StringBuilder(String.format("Строки, которые больше по длине, чем %f", averageLength));
@@ -130,7 +133,10 @@ public class Solution {
             // c помощью StreamApi мы можем перевести в массив char-ов, тут встроенные методы, чтобы находить
             // вывести разные элементы, в конце подсчитываем их просто (почему нельзя было назвать size, как другие
             // коллекции? Java странный язык...)
-            var countDifferentSymbol = word.chars().mapToObj(i -> (char) i).distinct().count();
+            var countDifferentSymbol = word.chars()
+                    .mapToObj(i -> (char) i)
+                    .distinct()
+                    .count();
 
             if (countDifferentSymbol > minLenSymbols) {
                 minLenSymbols = (int) countDifferentSymbol;
