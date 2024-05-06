@@ -293,6 +293,7 @@ public class Solution {
 
         var points = HelpMethods.cordsFromConsole(strings).toArray();
 
+
         List<Triangle> triangles = HelpMethods.getTriangleList(points);
 
         // Найдите треугольник с максимальным периметром
@@ -324,6 +325,7 @@ public class Solution {
         double minSum = Double.MAX_VALUE;
         Point minPoint = null;
 
+        // для каждой точки мы вычисляем сумму расстояний до остальных
         for (Point point : points) {
             double sum = 0;
             for (Point other : points) {

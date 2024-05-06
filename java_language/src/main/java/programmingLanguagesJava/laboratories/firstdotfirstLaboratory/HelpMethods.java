@@ -106,7 +106,7 @@ public class HelpMethods {
     }
 
     /**
-     * Образую всевозможные треугольники, проходясь за O(n^3)
+     * Образую всевозможные треугольники из каждой точки, проходясь за O(n^3)
      *
      * @param points массив с точками.
      * @return список с треугольниками.
@@ -131,7 +131,7 @@ public class HelpMethods {
         return Arrays.stream(strings.split("\n"))
                 .map(cord -> {
 
-            var pattern = Pattern.compile("\\(?\\d+, \\d+\\)?");
+            var pattern = Pattern.compile("\\(?\\d+,\\s*\\d+\\)?");
             var matcher = pattern.matcher(cord);
 
             if (matcher.find()) {

@@ -320,7 +320,7 @@ public class Solution {
     public static String twelfthQuestion(String text) {
 
         // Object-oriented programming is a programming language model organized around objects rather than "actions" and data rather than logic. Object-oriented programming blabla. Object-oriented programming bla.
-
+        // ?i - ignore register
         var regex = "(?i)" + "object-oriented programming";
         Pattern compiledPattern = Pattern.compile(regex);
         Matcher matcher = compiledPattern.matcher(text);

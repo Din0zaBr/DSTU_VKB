@@ -42,7 +42,6 @@ public class Menu extends BaseController {
         var context = new ContextAnchorPane(anchorPaneMovable, registrationAnchorPane, hiddenAnchorPane);
 
         Stream.of(
-                new VideoPlayerActionMenu(mediaViewVideo),
                 new SignInButtonActionMenu(context, signInButton),
                 new AddToDatabaseButtonActionMenu(addToDatabaseButton),
                 new ViewDatabaseButtonActionMenu(viewDatabaseButton)
