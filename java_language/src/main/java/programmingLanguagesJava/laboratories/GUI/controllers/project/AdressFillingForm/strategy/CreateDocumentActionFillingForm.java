@@ -26,9 +26,9 @@ public class CreateDocumentActionFillingForm implements ActionFillingForm {
         Platform.runLater(() -> {
             var docxProcessor = new DocxProcessor(jsonData);
             buttonConfigurator.setupButtonEvent(createDocument, event -> {
-                jsonData.put("addressField", addressField.getText());
-                jsonData.put("mainPerson", combobox.getValue());
-                jsonData.put("buildingPlan", fileChooserController.getSelectedFile());
+                jsonData.put("Client", addressField.getText());
+                jsonData.put("Mentor", combobox.getValue());
+                jsonData.put("VolumeOfWork", fileChooserController.getSelectedFile());
                 jsonData.put("allPeople", String.join(", ", combobox.getItems()));
                 jsonData.put("pathToFile", docxProcessor.event());
                 new NotificationClass().start();

@@ -3,7 +3,7 @@
  */
 
 package programmingLanguagesJava.laboratories.GUI.controllers.project.AdressFillingForm.documentProcessing;
-
+// apache.poi - библиотека для работы с доком и не только
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFRun;
 
@@ -63,10 +63,9 @@ class NumberedUnderlineReplacer implements UnderlineReplacer {
      */
     private LinkedHashMap<String, String> convertJsonForDocument(HashMap<String, String> jsonData) {
         var result = new LinkedHashMap<String, String>();
-        result.put("city", jsonData.getOrDefault("addressField", "").split(",")[4]);
-        result.put("year", "2024");
-        result.put("mainPerson", jsonData.getOrDefault("mainPerson", ""));
-        result.put("addressField", jsonData.getOrDefault("addressField", ""));
+        // порядок заполнения в doc, несмотря на порядок заполнения в приложении
+        result.put("Client ", jsonData.getOrDefault("Client", ""));
+        result.put("Mentor", jsonData.getOrDefault("Mentor", ""));
         result.put("cost", ThreadLocalRandom.current().nextInt(45_000, 100_000) + " тыс. рублей");
         return result;
     }
