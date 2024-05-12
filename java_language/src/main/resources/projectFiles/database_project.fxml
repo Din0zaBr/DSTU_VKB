@@ -37,7 +37,7 @@
                   <TableColumn fx:id="surnameColumn" editable="false" prefWidth="100.0" resizable="false" sortable="false" text="Фамилия" />
                   <TableColumn fx:id="nameColumn" editable="false" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="100.0" resizable="false" sortable="false" text="Имя" />
                   <TableColumn fx:id="patronymicColumn" editable="false" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="120.0" resizable="false" sortable="false" text="Отчество" />
-                  <TableColumn fx:id="planColumn" editable="false" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="75.0" resizable="false" sortable="false" text="План" />
+                  <TableColumn fx:id="planColumn" editable="false" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="75.0" resizable="false" sortable="false" text="Объём" />
                   <TableColumn fx:id="pactColumn" editable="false" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="75.0" resizable="false" sortable="false" text="Договор" />
               </columns>
                <columnResizePolicy>
@@ -71,7 +71,7 @@
                      <children>
                         <StackPane layoutX="6.0" layoutY="-1.0" prefHeight="39.0" prefWidth="287.0" style="-fx-border-radius: 18; -fx-background-radius: 30;">
                            <children>
-                              <TextField fx:id="keywordTextField" promptText="Поиск: " style="-fx-border-radius: 18; -fx-background-radius: 30; -fx-background-color: #9e5ce4; -fx-border-color: WHITE; -fx-text-fill: WHITE; -fx-padding: 0 0 0 20;">
+                              <TextField fx:id="keywordTextField" promptText="Поиск: " style="-fx-border-radius: 18; -fx-background-radius: 30; -fx-background-color: #008800; -fx-border-color: WHITE; -fx-text-fill: WHITE; -fx-padding: 0 0 0 20;">
                                  <opaqueInsets>
                                     <Insets />
                                  </opaqueInsets>
@@ -186,12 +186,12 @@
                      </children></AnchorPane>
                   <AnchorPane prefHeight="138.0" prefWidth="299.0">
                      <children>
-                        <Button fx:id="planOfhouseButton" layoutX="7.0" layoutY="68.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="125.0" style="-fx-background-color: #9e5ce4; -fx-background-radius: 18; -fx-border-radius: 18; -fx-border-color: WHITE;" stylesheets="@../stageFiles/Styles.css" text="План здания" textFill="WHITE" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="150.0">
+                        <Button fx:id="planOfhouseButton" layoutX="7.0" layoutY="68.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="125.0" style="-fx-background-color: #008800; -fx-background-radius: 18; -fx-border-radius: 18; -fx-border-color: WHITE;" stylesheets="@../stageFiles/Styles.css" text="Объём, смета" textFill="WHITE" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="150.0">
                            <font>
                               <Font name="Comic Sans MS Bold" size="15.0" />
                            </font>
                         </Button>
-                        <Button fx:id="contractButton" layoutX="168.0" layoutY="86.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="125.0" style="-fx-background-color: #9e5ce4; -fx-background-radius: 18; -fx-border-radius: 18; -fx-border-color: WHITE;" stylesheets="@../stageFiles/Styles.css" text="Договор" textFill="WHITE" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="155.0" AnchorPane.rightAnchor="7.0">
+                        <Button fx:id="contractButton" layoutX="168.0" layoutY="86.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="125.0" style="-fx-background-color: #008800; -fx-background-radius: 18; -fx-border-radius: 18; -fx-border-color: WHITE;" stylesheets="@../stageFiles/Styles.css" text="Договор" textFill="WHITE" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="155.0" AnchorPane.rightAnchor="7.0">
                            <font>
                               <Font name="Comic Sans MS Bold" size="15.0" />
                            </font>

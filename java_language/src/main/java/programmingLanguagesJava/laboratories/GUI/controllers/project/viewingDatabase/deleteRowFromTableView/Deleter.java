@@ -7,7 +7,9 @@ import lombok.RequiredArgsConstructor;
 import programmingLanguagesJava.laboratories.GUI.config.ButtonConfigurator;
 import programmingLanguagesJava.laboratories.GUI.controllers.project.database.utils.PersonInfo;
 import programmingLanguagesJava.laboratories.GUI.controllers.project.viewingDatabase.ElementDatabaseView;
-
+// Нативного удаления нет. Один из костылей - фильтрация на уровне JavaFX
+// Вывожу все строки, которые не равны выделенной
+// SQLite
 /**
  * Класс, который отвечает за удаление строк из TableView.
  * Времени нет, чтобы делать удаление из БД, поэтому такое вот сделал.

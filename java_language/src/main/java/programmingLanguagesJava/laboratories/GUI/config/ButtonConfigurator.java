@@ -9,7 +9,7 @@ package programmingLanguagesJava.laboratories.GUI.config;
 import javafx.event.EventHandler;
 import javafx.scene.control.ButtonBase;
 import javafx.scene.input.MouseEvent;
-
+// Настройка кнопки с точки зрения звука
 public class ButtonConfigurator {
 
     private static ButtonConfigurator instance;
@@ -42,7 +42,7 @@ public class ButtonConfigurator {
     }
 
     /**
-     * Настройка кнопки с определенными параметрами.
+     * Настройка кнопки с определенными параметрами. Для вывода ошибки если что
      *
      * @param button       кнопка, на которую мы хотим назначить настройку по нажатию и т.п.
      * @param action       действие, которое мы хотим выполнить при нажатии на кнопку.

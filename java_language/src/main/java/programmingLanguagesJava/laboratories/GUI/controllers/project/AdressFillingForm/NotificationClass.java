@@ -39,7 +39,7 @@ public class NotificationClass extends Thread {
         }
 
         var notification = Notifications.create()
-                .title("Операция произошла успешно")
+                .title("Операция произошла успешно") // при создании doc титульник
                 .owner(stage)
                 .text("Документ был создан! Сохраните в базу данных! ")
                 .hideAfter(Duration.seconds(7))

@@ -17,7 +17,7 @@
       <AnchorPane prefHeight="79.0" prefWidth="800.0" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="exitButton" layoutX="761.0" layoutY="15.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="28.0" stylesheets="@../stageFiles/Styles.css" />
-            <Text fill="WHITE" layoutX="315.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Выбор адреса">
+            <Text fill="WHITE" layoutX="364.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Меню">
                <font>
                   <Font name="Comic Sans MS Bold" size="25.0" />
                </font>
@@ -41,7 +41,7 @@
                            <children>
                               <AnchorPane prefHeight="59.0" prefWidth="486.0" style="-fx-border-radius: 18;">
                                  <children>
-                                    <Text fill="WHITE" layoutX="11.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Адрес объекта:" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="11.0" AnchorPane.topAnchor="15.0">
+                                    <Text fill="WHITE" layoutX="47.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Клиент" AnchorPane.bottomAnchor="18.666666666666664" AnchorPane.leftAnchor="47.0" AnchorPane.topAnchor="19.0">
                                        <font>
                                           <Font name="Comic Sans MS Bold" size="16.0" />
                                        </font>
@@ -56,7 +56,7 @@
                               </AnchorPane>
                               <AnchorPane prefHeight="59.0" prefWidth="509.0">
                                  <children>
-                                    <Text fill="WHITE" layoutX="12.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ФИО владедельцев:" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="11.0" AnchorPane.topAnchor="15.46923828125">
+                                    <Text fill="WHITE" layoutX="24.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ФИО сотрудника:" AnchorPane.bottomAnchor="18.666666666666664" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="19.0">
                                        <font>
                                           <Font name="Comic Sans MS Bold" size="16.0" />
                                        </font>
@@ -71,12 +71,12 @@
                               </AnchorPane>
                               <AnchorPane minHeight="-Infinity" prefHeight="59.0" prefWidth="509.0" style="-fx-border-width: 0 0 2 0; -fx-border-color: transparent transparent white transparent;">
                                  <children>
-                                    <Text fill="WHITE" layoutX="14.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ответственное лицо: ">
+                                    <Text fill="WHITE" layoutX="46.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ментор">
                                        <font>
                                           <Font name="Comic Sans MS Bold" size="16.0" />
                                        </font>
                                     </Text>
-                                    <ComboBox fx:id="combobox" layoutX="202.0" layoutY="6.0" prefHeight="35.0" prefWidth="255.0" promptText="Выбрать лицо " style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-border-color: transparent;" stylesheets="@CSS/combobox-styles.css" visibleRowCount="5" AnchorPane.bottomAnchor="10.0" AnchorPane.topAnchor="10.0">
+                                    <ComboBox fx:id="combobox" layoutX="202.0" layoutY="6.0" prefHeight="35.0" prefWidth="255.0" promptText="Выбрать ментора " style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-border-color: transparent;" stylesheets="@CSS/combobox-styles.css" visibleRowCount="5" AnchorPane.bottomAnchor="10.0" AnchorPane.topAnchor="10.0">
                                        <opaqueInsets>
                                           <Insets />
                                        </opaqueInsets>
@@ -85,7 +85,7 @@
                               </AnchorPane>
                               <AnchorPane prefHeight="59.0" prefWidth="509.0" style="-fx-border-color: white; -fx-border-width: 0 0 2 0;">
                                  <children>
-                                    <Text fill="WHITE" layoutX="21.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="План помещения:" wrappingWidth="234.63671875" AnchorPane.bottomAnchor="18.3359375" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="255.36328125" AnchorPane.topAnchor="18.3671875">
+                                    <Text fill="WHITE" layoutX="27.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Объём, смета" wrappingWidth="157.3034210205078" AnchorPane.bottomAnchor="24.0" AnchorPane.leftAnchor="27.0" AnchorPane.rightAnchor="627.0299123128256" AnchorPane.topAnchor="21.0">
                                        <font>
                                           <Font name="Comic Sans MS Bold" size="16.0" />
                                        </font>

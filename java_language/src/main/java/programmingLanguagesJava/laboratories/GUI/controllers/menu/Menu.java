@@ -4,7 +4,7 @@
  */
 
 package programmingLanguagesJava.laboratories.GUI.controllers.menu;
-
+// Логическое объединение всех динамических объектов. Паттерн стратегия. Папку чек лол
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

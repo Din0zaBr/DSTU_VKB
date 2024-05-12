@@ -16,7 +16,7 @@ import javafx.application.Platform;
  */
 public class FileWatcherService extends Thread {
 
-    private final Set<String> WORDS = new HashSet<>(Arrays.asList(
+    private final Set<String> WORDS = new HashSet<>(Arrays.asList( // для уведомления
             "кража", "украли", "обокрали", "взломали", "взлом",
             "стырили", "красть", "ломать", "стырить"
     ));

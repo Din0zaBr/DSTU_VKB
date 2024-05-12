@@ -1,5 +1,5 @@
 package programmingLanguagesJava.laboratories.GUI.controllers.project.database.utils;
-
+// привязанность человека к документам. Не record, тк здесь использована библиотека lombok. В процессе работы кода создают геттеры и сеттеры, конструкторы, ...
 import lombok.Data;
 import lombok.AllArgsConstructor;
 @AllArgsConstructor

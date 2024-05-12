@@ -13,7 +13,7 @@ import lombok.RequiredArgsConstructor;
 import programmingLanguagesJava.laboratories.GUI.controllers.project.viewingDatabase.ElementDatabaseView;
 
 import java.util.List;
-
+// Добавление иконок в БД
 /**
  * Данный класс реализует паттерн строитель, используя библиотеку Lombok
  * Здесь как раз реализуется само добавление в таблицу из базы данных.
@@ -30,7 +30,7 @@ public class TableViewManager implements ElementDatabaseView {
     private final ObservableList<PersonInfo> personInfos;
 
     private enum IMAGES {
-        ;
+        ; // БД
         private static final Image WORD_PNG = new Image("/projectFiles/images/file-extension.png");
         private static final Image RVT_JPG = new Image("/projectFiles/images/file.png");
     }

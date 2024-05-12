@@ -271,8 +271,13 @@ public class Solution {
     public static String fifteenthQuestion(String ignoreUnused) {
         var symList = new SingleLinkedList<Integer>();
 
-        IntStream.range(1, 11).forEach(symList::add);
-        IntStream.iterate(9, i -> i - 1).limit(9).forEach(symList::add);
+        IntStream
+                .range(1, 11)
+                .forEach(symList::add);
+        IntStream
+                .iterate(9, i -> i - 1)
+                .limit(8)
+                .forEach(symList::add);
 
         return String.format("Список %s - симметричен (%s)", symList, symList.isSymmetric());
     }

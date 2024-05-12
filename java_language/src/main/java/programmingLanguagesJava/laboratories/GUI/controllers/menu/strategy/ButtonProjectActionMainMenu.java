@@ -2,7 +2,7 @@ package programmingLanguagesJava.laboratories.GUI.controllers.menu.strategy;
 
 import javafx.scene.control.Button;
 import lombok.RequiredArgsConstructor;
-
+// Обработка нажатия на кнопки
 /**
  * Данный класс является одним из посредников для удобного запуска элементов UI.
  * Реализован паттерн стратегия.

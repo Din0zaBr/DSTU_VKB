@@ -20,7 +20,8 @@ public class FormObserver implements Observer {
     private final List<Button> buttons;
 
     /**
-     * Метод, который запускает слушателя
+     * Метод, который запускает слушателя.
+     * zB не активные кнопки
      */
     @Override
     public void listen() {

@@ -16,7 +16,7 @@ public class StageConfigurator {
      */
      public static Stage configureStage(Stage primaryStage) {
          // Название приложения
-         primaryStage.setTitle("Ковалев Данил ВКБ22");
+         primaryStage.setTitle("Заболотный Иван ВКБ21");
 
          // Установка неизменяемости по размеру, так как я немного криво располагаю элементы.
          // Не умею в масштабируемое приложение, поэтому так.

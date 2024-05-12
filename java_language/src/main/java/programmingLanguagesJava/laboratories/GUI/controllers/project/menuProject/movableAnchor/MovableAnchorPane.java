@@ -12,10 +12,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 import programmingLanguagesJava.laboratories.GUI.controllers.project.menuProject.ElementMenu;
 import programmingLanguagesJava.laboratories.GUI.controllers.project.menuProject.strategyContext.ContextAnchorPane;
-
+// Анимания вээээээээээу
 public class MovableAnchorPane implements ElementMenu {
 
-    private final AnchorPane anchorPane, registrationAnchorPane, cameraAnchorPane;
+    private final AnchorPane anchorPane, registrationAnchorPane, cameraAnchorPane; // прямоугольные прямоугольнички белые
 
     // Константы для продолжительности анимаций
     private enum DURATION {
@@ -37,18 +37,18 @@ public class MovableAnchorPane implements ElementMenu {
      * Обработка событий, чтобы двигался anchorPane
      */
     @Override
-    public void event() {
-        var newX = anchorPane.getLayoutX() + 400;
-        anchorPane.setStyle("-fx-border-color: white; -fx-border-radius: 18; -fx-background-radius: 30");
-        anchorPane.setLayoutX(newX);
+    public void event() { // Всегда отвечает за передвижение всего
+        var newX = anchorPane.getLayoutX() + 400; // коорды по Х
+        anchorPane.setStyle("-fx-border-color: white; -fx-border-radius: 18; -fx-background-radius: 30"); // ставит CSS параметры, края белые
+        anchorPane.setLayoutX(newX); // новое значение X
 
 
-        var translateTransition = new TranslateTransition(DURATION.TRANSLATE_DURATION, anchorPane);
-        translateTransition.setToX(newX);
-        translateTransition.play();
+        var translateTransition = new TranslateTransition(DURATION.TRANSLATE_DURATION, anchorPane); // Встроенная анимация передвижения в Java FX - TRANSLATE
+        translateTransition.setToX(newX); // к какому месту
+        translateTransition.play(); // танцуем
 
-        configureFadeTransition(registrationAnchorPane, 1.0, 0.0, false).play();
-        configureFadeTransition(cameraAnchorPane, 0.0, 1.0, true).play();
+        configureFadeTransition(registrationAnchorPane, 1.0, 0.0, false).play(); // плавная анимация исчезновения правого окошка
+        configureFadeTransition(cameraAnchorPane, 0.0, 1.0, true).play(); // плавная анимация появления левого окошка
     }
 
     /**
@@ -60,7 +60,7 @@ public class MovableAnchorPane implements ElementMenu {
         var fadeTransition = new FadeTransition(DURATION.FADE_DURATION, pane);
         fadeTransition.setFromValue(fromValue);
         fadeTransition.setToValue(toValue);
-        fadeTransition.setOnFinished(event -> pane.setVisible(visibility));
+        fadeTransition.setOnFinished(event -> pane.setVisible(visibility)); // при окончании анимации по логике оно либо видно, либо не видно
         return fadeTransition;
     }
 

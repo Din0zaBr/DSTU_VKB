@@ -37,6 +37,7 @@ public class Solution {
      */
     @SuppressWarnings("unused")
     public static String secondQuestion(String string) {
+        // ^ - начало, $ - конец
         return String.valueOf(Pattern.matches("^(\\{?[0-9a-fA-F]{8}-(?:[0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}}?)$", string.strip()));
     }
 
@@ -64,6 +65,7 @@ public class Solution {
      */
     @SuppressWarnings("unused")
     public static String fourthQuestion(String string) {
+        // s - необязательна, //. - экранирование, так как . обозн все символы
         return String.valueOf(Pattern.matches("^https?://(?:www\\.)?[a-z0-9]{2,}\\.(com|ru)$", string.strip()));
     }
 
@@ -86,8 +88,14 @@ public class Solution {
      */
     @SuppressWarnings("unused")
     public static String sixthQuestion(String string) {
-        return String.valueOf(Pattern.matches("^(0[1-9]|1\\d|2[0-8])/(0[1-9]|1[0-2])/((?:1[6-9]|[2-9]\\d)?\\d{2})$" +
+        // \\d - любая цифра (0 - 9) с экранированием
+        return String.valueOf(Pattern.matches("^(0[1-9]|1\\d|2[0-8])" + // день месяца
+                        "/(0[1-9]|1[0-2])" + // месяц
+                        "/((?:1[6-9]|[2-9]\\d)?\\d{2})$" + // год
+                        // | -  строка может соответствовать одному из нескольких шаблонов
                         "|^29/02/(?:(?:1[6-9]|[2-9]\\d)(?:0[48]|[2468][048]|[13579][26])|(?:16|[2468][048]|[3579][26])00)$",
+                // Високосный год — это год, который делится на 4 без остатка, за исключением лет,
+                // которые делятся на 100, но не делятся на 400 без остатка.
                 string.strip()));
     }
 
@@ -98,6 +106,7 @@ public class Solution {
      * – пример неправильных выражений: bug@@@com.ru, @val.ru, Just Text2.
      */
     @SuppressWarnings("unused")
+    // //w+ - одна или более лат букв; м/б без точки
     public static String seventhQuestion(String string) {
         return String.valueOf(Pattern.matches("^\\w+@\\w+(\\.)?\\w+$", string.strip()));
     }

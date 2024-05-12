@@ -18,7 +18,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 import java.util.stream.Stream;
-
+// Запускает все абстракции по иерархии от AddressFillingForm до strategy включительно
 /**
  * Контроллер для окна для ввода данных от оператора
  */
@@ -40,7 +40,6 @@ public class AddressFillingForm extends BaseController {
         var fileChooser = new FileChooserController();
         var jsonData = new HashMap<String, String>();
 
-        // TODO: добавить многопоточный запуск, настроить все
 
         Stream.of(
                 new TextFieldAddControllerActionFillingForm(fullNameField, addHuman, combobox),

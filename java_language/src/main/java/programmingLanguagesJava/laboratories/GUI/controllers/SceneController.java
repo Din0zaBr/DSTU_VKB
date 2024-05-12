@@ -2,6 +2,7 @@
  * SceneController - это мой класс, который управляет другими контроллерами.
  * Был создан для того, чтобы можно было удобно переключаться между окнами.
  * Здесь реализован удобный интерфейс, чтобы переключаться между окнами.
+ * Запускается одним из первых
  */
 
 package programmingLanguagesJava.laboratories.GUI.controllers;
@@ -21,7 +22,7 @@ public class SceneController {
     @Getter
     private final Stage stage;
     private static SceneController instance;
-    private final Stack<Scene> sceneHistory = new Stack<>();
+    private final Stack<Scene> sceneHistory = new Stack<>(); // лол стек
 
     private enum Scenes {
         ;
@@ -48,6 +49,7 @@ public class SceneController {
     private SceneController(Stage stage) {
         this.stage = stage;
     }
+    // stage - физическая сущность приложения, которое привязано к окну zB 2 новых окна chrome - 2 stage
 
     /**
      * Данный метод как раз и есть реализация паттерна Singleton на Java. Тут нет метода __new__, как в Python, чтобы
@@ -55,6 +57,8 @@ public class SceneController {
      * @param stage окно Stage, к которому мы хотим прикрепить наш SceneController
      * @return возвращает SceneController
      */
+    // Чтобы не возникало больших нагрузок на приложение. Чтобы при открытии другого окна,
+    // не происходил перезапуск всего приложения -> Эффект памяти
     public static SceneController getInstance(Stage stage) {
         if (instance == null) {
             instance = new SceneController(stage);
@@ -78,7 +82,7 @@ public class SceneController {
      */
     public void switchFromMenuToLaboratories() {
         animationSlideWindow(Scenes.LABORATORIES);
-        sceneHistory.push(Scenes.MENU);
+        sceneHistory.push(Scenes.MENU); // push работает как положить поверх всех книг новую книгу (посмотреть БД -> добавить человека и сделай возврат. Вуаля стэк)
     }
 
     /**
@@ -134,6 +138,7 @@ public class SceneController {
      * Переключение с любого окна на меню.
      * Здесь используется для удобства взаимодействия с самого начала приложения.
      * При первом запуске
+     * Подгрузка всех файлов FXML для достижения эффекта памяти
      */
     public void setStartMenu() {
 
@@ -151,7 +156,7 @@ public class SceneController {
 
         }
         sceneHistory.push(Scenes.MENU);
-        this.stage.setScene(sceneHistory.peek());
+        this.stage.setScene(sceneHistory.peek()); // позволяет тыкать после
     }
 
 

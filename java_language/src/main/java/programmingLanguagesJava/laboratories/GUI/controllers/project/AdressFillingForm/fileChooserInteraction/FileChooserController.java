@@ -18,7 +18,8 @@ public class FileChooserController implements ElementAddressFillingForm {
     // Фильтры для файлов, которые нам нужны. Я изначально планирую только фото или файлы AutoCad/Revit
     List<FileChooser.ExtensionFilter> filters = List.of(
             new FileChooser.ExtensionFilter("Photo", "*.jpg", "*.jpeg", "*.png"),
-            new FileChooser.ExtensionFilter("Plans", "*.dwg", "*.rvt")
+            new FileChooser.ExtensionFilter("Plans", "*.dwg", "*.rvt"),
+            new FileChooser.ExtensionFilter("Excel", "*.xlsx", "*.xls")
     );
     private File selectedFile;
 

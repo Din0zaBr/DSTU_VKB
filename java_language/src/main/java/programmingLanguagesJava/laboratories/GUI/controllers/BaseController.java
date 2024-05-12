@@ -15,7 +15,7 @@ import programmingLanguagesJava.laboratories.GUI.config.ButtonConfigurator;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
+// База. Чек имя файла лол. кнопки Вкл/выкл + назад для не дублирования кода. Именно для окна
 public abstract class BaseController implements Initializable {
     @FXML
     private Button exitButton, backButton;

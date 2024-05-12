@@ -126,7 +126,7 @@ public class Solution {
     public static String fourthQuestion(String strings) {
         var ListWithRows = strings.split("\\s+");
 
-        int minLenSymbols = Integer.MIN_VALUE;
+        int minLenSymbols = Integer.MAX_VALUE;
         String wordWithMaxLength = "";
 
         for (var word : ListWithRows) {
@@ -138,7 +138,7 @@ public class Solution {
                     .distinct()
                     .count();
 
-            if (countDifferentSymbol > minLenSymbols) {
+            if (countDifferentSymbol < minLenSymbols) {
                 minLenSymbols = (int) countDifferentSymbol;
                 wordWithMaxLength = word;
             }
@@ -192,7 +192,8 @@ public class Solution {
                           объединения частей строки, созданных в разных потоках.
                          */
                         .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
-                        .toString().equals(word))
+                        .toString()
+                        .equals(word))
                 .findFirst()
                 .orElse("Нет такой строки");
 
@@ -210,7 +211,9 @@ public class Solution {
                     var set = new HashSet<String>();
                     word.chars().forEach(number -> set.add(String.valueOf(number)));
                     return set.size() == word.length();
-                }).findFirst().orElse("Нет такой строки");
+                })
+                .findFirst()
+                .orElse("Нет такой строки");
 
         if (firstWord.equals("Нет такой строки")) {
             return firstWord;
@@ -226,10 +229,15 @@ public class Solution {
     @SuppressWarnings("unused")
     public static String eighthQuestion(String strings) {
 
-        var result = Arrays.stream(strings.split("\\s+")).filter(word -> word.matches("[0-9]+")).filter(number -> {
+        var result = Arrays.stream(strings.split("\\s+"))
+                .filter(word -> word.matches("[0-9]+"))
+                .filter(number -> {
             var reversedNumber = new StringBuilder(number).reverse().toString();
             return reversedNumber.equals(number);
-        }).skip(1).findFirst().orElse("Не найдено палиндромов, состоящих только из цифр");
+        })
+                .skip(1)
+                .findFirst()
+                .orElse("Не найдено палиндромов, состоящих только из цифр");
 
         if (result.equals("Не найдено палиндромов, состоящих только из цифр"))
             return result;
@@ -334,7 +342,8 @@ public class Solution {
             }
             count++;
         }
-
+        // метод реализует терминальный шаг добавления и замены. Он читает символы из входной последовательности,
+        // начиная с позиции, где произошла последняя замена, и добавляет их в указанный StringBuilder
         matcher.appendTail(sb);
 
         return sb.toString();
@@ -403,7 +412,11 @@ public class Solution {
      */
     @SuppressWarnings("unused")
     public static String sixteenthQuestion(String strings) {
-        var result = Arrays.stream(strings.split("\\s+")).min(Comparator.comparingLong(o -> o.chars().distinct().count()));
+        var result = Arrays.stream(strings.split("\\s+"))
+                .min(Comparator.comparingLong(o -> o.chars()
+                        // удаление повторяющихся цифр
+                        .distinct()
+                        .count()));
         return String.format("Найденное слово: %s", result);
     }
 
@@ -415,6 +428,8 @@ public class Solution {
     @SuppressWarnings("unused")
     public static String seventeenthQuestion(String strings) {
         var result = Arrays.stream(strings.split("\\s+"))
+                // одной или нескольким буквам латинского алфавита (заглавных или строчных)
+                // одно или больше повторений
                 .filter(word -> word.matches("[A-Za-z]+")).count();
         return String.format("Количество слов, состоящих только из латинского алфавита: %d", result);
     }

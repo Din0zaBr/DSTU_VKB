@@ -22,7 +22,7 @@ public class PhotoReader extends FileOpener {
     public void event() {
         buttonConfigurator.setupButtonEvent(button, mouseEvent -> {
             PersonInfo selectedPerson = customersTableView.getSelectionModel().getSelectedItem();
-            openFile(selectedPerson.getPlanOfHouse(), ".png");
+            openFile(selectedPerson.getPlanOfHouse(), ".xlsx");
         });
     }
 }

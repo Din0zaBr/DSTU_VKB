@@ -76,9 +76,9 @@ public class DataBaseSQLite {
      * @param personData Данные о человеке в формате HashMap.
      */
     public void insert(Map<String, String> personData) {
-        remainingInfoDAO.insert(personData.get("pathToFile"), personData.get("buildingPlan"));
+        remainingInfoDAO.insert(personData.get("pathToFile"), personData.get("VolumeOfWork"));
         var remainingInfoId = remainingInfoDAO.getLastIndex();
-        var listOfPersons = Person.createPeoples(personData.get("allPeople"), personData.get("mainPerson"));
+        var listOfPersons = Person.createPeoples(personData.get("allPeople"), personData.get("Mentor"));
         peoplesDAO.insert(listOfPersons, remainingInfoId);
     }
 
@@ -92,17 +92,19 @@ public class DataBaseSQLite {
      */
     public List<PersonInfo> loadPersonInfos() {
         var personInfos = new LinkedList<PersonInfo>();
-
+                                                                                        // объединение таблиц
         try (var resultSet = this.connection.createStatement().executeQuery(SQLQuery.JOIN_TABLES)) {
-
+        // считывание - в начале объедение таблиц
+            // объединение т.к. возвращается множество из строк
             while (resultSet.next()) {
                 var firstName = resultSet.getString("first_name");
                 var lastName = resultSet.getString("last_name");
                 var patronymic = resultSet.getString("patronymic");
-                var planOfHouse = resultSet.getBytes("plan_of_house");
+                var excelFile = resultSet.getBytes("plan_of_house");
                 var document = resultSet.getBytes("document");
 
-                personInfos.add(new PersonInfo(firstName, lastName, patronymic, planOfHouse, document));
+                personInfos.add(new PersonInfo(firstName, lastName, patronymic, excelFile, document));
+//                System.out.println(resultSet); // все строки БД в памяти ПК
             }
 
         } catch (SQLException e) {

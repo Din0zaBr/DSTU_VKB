@@ -10,7 +10,7 @@ import lombok.Data;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-
+// описывается сам человек
 /**
  * Класс Person представляет собой модель человека с полями для имени, фамилии, отчества и должности.
  * Используется для хранения и обработки информации о людях.
